@@ -7,7 +7,7 @@ import com.aldebaran.qi.sdk.object.conversation.BaseQiChatExecutor;
 import com.softbankrobotics.retaildemo.Fragments.CollectFragment;
 import com.softbankrobotics.retaildemo.Fragments.ProductFragment;
 import com.softbankrobotics.retaildemo.Fragments.ReturnMainFragment;
-import com.softbankrobotics.retaildemo.Fragments.ProductSelectionFragment;
+import com.softbankrobotics.retaildemo.Fragments.ShowSOTFragment;
 import com.softbankrobotics.retaildemo.MainActivity;
 
 import java.util.List;
@@ -34,19 +34,19 @@ public class StatusExecutor extends BaseQiChatExecutor {
             value = params.get(1);
         }
         Log.d(TAG,"field : " + field + " value : "+ value);
-        ProductSelectionFragment selectionFragment;
+        ShowSOTFragment selectionFragment;
         ProductFragment productFragment;
         ReturnMainFragment returnMainFragment;
         CollectFragment collectFragment;
         switch (field){
             case ("gender"):
                 ma.status.setGender(value);
-                selectionFragment = (ProductSelectionFragment) ma.getFragment();
-                selectionFragment.setImage(value,selectionFragment.current_type);
+                selectionFragment = (ShowSOTFragment) ma.getFragment();
+
                 break;
             case ("type"):
-                selectionFragment = (ProductSelectionFragment) ma.getFragment();
-                selectionFragment.setImage(selectionFragment.current_gender,value);
+                selectionFragment = (ShowSOTFragment) ma.getFragment();
+
                 break;
             case ("color"):
                 productFragment = (ProductFragment) ma.getFragment();
@@ -58,15 +58,15 @@ public class StatusExecutor extends BaseQiChatExecutor {
                 break;
             case ("clickreturn"):
                 returnMainFragment = (ReturnMainFragment) ma.getFragment();
-                returnMainFragment.pressListViewButton(Integer.parseInt(value));
+//                returnMainFragment.pressListViewButton(Integer.parseInt(value));
                 break;
             case ("clickdemoreturn"):
                 returnMainFragment = (ReturnMainFragment) ma.getFragment();
-                returnMainFragment.pressDemoTicketButton();
+//                returnMainFragment.pressDemoTicketButton();
                 break;
             case ("clickdemocollect"):
                 collectFragment = (CollectFragment) ma.getFragment();
-                collectFragment.pressDemoTicketButton();
+
                 break;
             case ("size_color"):
                 productFragment = (ProductFragment) ma.getFragment();
@@ -77,11 +77,11 @@ public class StatusExecutor extends BaseQiChatExecutor {
                 Log.d(TAG,"size color executor done");
                 break;
             case ("gender_type"):
-                selectionFragment = (ProductSelectionFragment) ma.getFragment();
+                selectionFragment = (ShowSOTFragment) ma.getFragment();
                 String gender = value.split(" ")[0];
                 String type = value.split(" ")[1];
                 ma.status.setGender(gender);
-                selectionFragment.setImage(gender,type);
+
                 break;
             default:
                 break;

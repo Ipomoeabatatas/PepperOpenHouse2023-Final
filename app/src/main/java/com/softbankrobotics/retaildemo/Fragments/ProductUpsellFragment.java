@@ -81,7 +81,7 @@ public class ProductUpsellFragment extends Fragment {
         Double tmp = Double.parseDouble(ma.status.upsellPrice);
         tmp = tmp/2;
         price.setText("EUR " + new DecimalFormat("00.00").format(tmp));
-        view.findViewById(R.id.button_back_upsell).setOnClickListener(v -> ma.setFragment(new ProductSelectionFragment()));
+        view.findViewById(R.id.button_back_upsell).setOnClickListener(v -> ma.setFragment(new ShowSOTFragment()));
 
     }
 

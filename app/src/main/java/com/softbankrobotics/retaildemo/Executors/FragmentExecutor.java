@@ -1,15 +1,13 @@
 package com.softbankrobotics.retaildemo.Executors;
 
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 import com.aldebaran.qi.sdk.QiContext;
+import com.aldebaran.qi.sdk.builder.SayBuilder;
 import com.aldebaran.qi.sdk.object.conversation.BaseQiChatExecutor;
-import com.softbankrobotics.retaildemo.Fragments.CollectConfirmFragment;
+import com.aldebaran.qi.sdk.object.conversation.Say;
 import com.softbankrobotics.retaildemo.Fragments.CollectFragment;
-import com.softbankrobotics.retaildemo.Fragments.CollectLockerFragment;
 import com.softbankrobotics.retaildemo.Fragments.EmailFragment;
-import com.softbankrobotics.retaildemo.Fragments.FeedbackFragment;
 import com.softbankrobotics.retaildemo.Fragments.MainMenuFragment;
 import com.softbankrobotics.retaildemo.Fragments.ProductMapFragment;
 import com.softbankrobotics.retaildemo.Fragments.ProductFragment;
@@ -17,9 +15,11 @@ import com.softbankrobotics.retaildemo.Fragments.ProductUpsellFragment;
 import com.softbankrobotics.retaildemo.Fragments.ReturnMainFragment;
 import com.softbankrobotics.retaildemo.Fragments.ReturnProductFragment;
 import com.softbankrobotics.retaildemo.Fragments.ReturnReasonFragment;
-import com.softbankrobotics.retaildemo.Fragments.ProductSelectionFragment;
+import com.softbankrobotics.retaildemo.Fragments.ShowSOTFragment;
 import com.softbankrobotics.retaildemo.Fragments.SplashScreenFragment;
+import com.softbankrobotics.retaildemo.Fragments.AppDisplayFragment;
 import com.softbankrobotics.retaildemo.MainActivity;
+
 
 import java.util.List;
 
@@ -39,6 +39,10 @@ public class FragmentExecutor extends BaseQiChatExecutor {
         if (params == null || params.isEmpty()) {
             return;
         }
+        Say say = SayBuilder.with(qiContext) // Create the builder with the context.
+                .withText("Hello human!") // Set the text to say.
+                .build(); // Build the say action.
+        say.run();
         String fragmentName = params.get(0);
         String data = "";
         if(params.size() == 2){
@@ -56,10 +60,13 @@ public class FragmentExecutor extends BaseQiChatExecutor {
                     mainActivity.status.gender = "MALE";
                     mainActivity.status.estimatedAge = 20;
                 }
-                mainActivity.setFragment(new ProductSelectionFragment());
+                mainActivity.setFragment(new ShowSOTFragment());
                 break;
             case ("mainmenu"):
                 mainActivity.setFragment(new MainMenuFragment());
+                break;
+            case ("relatedApps"):
+                mainActivity.setFragment(new AppDisplayFragment());
                 break;
             case ("map"):
                 mainActivity.setFragment(new ProductMapFragment());
@@ -67,27 +74,17 @@ public class FragmentExecutor extends BaseQiChatExecutor {
             case ("product"):
                 mainActivity.setFragment(new ProductFragment());
                 break;
-            case ("locker"):
-                CollectConfirmFragment ccf = (CollectConfirmFragment)mainActivity.getFragment();
-                if(ccf.getSigned()){
-                    mainActivity.setFragment(new CollectLockerFragment());
-                }
-                break;
+//            case ("locker"):
+//                CollectConfirmFragment ccf = (CollectConfirmFragment)mainActivity.getFragment();
+//                if(ccf.getSigned()){
+//                    mainActivity.setFragment(new CollectLockerFragment());
+//                }
+//                break;
             case ("upsell"):
                 ProductFragment productFragment = (ProductFragment) mainActivity.getFragment();
                 productFragment.onClickBuy();
                 break;
-            case ("feedback"):
-                Fragment fragment = mainActivity.getFragment();
-                if(fragment instanceof CollectConfirmFragment){
-                  CollectConfirmFragment collectConfirmFragment = (CollectConfirmFragment) fragment;
-                  if(collectConfirmFragment.getSigned()){
-                      mainActivity.setFragment(new FeedbackFragment());
-                  }
-                }else{
-                    mainActivity.setFragment(new FeedbackFragment());
-                }
-                break;
+
             case ("returnprod"):
                 mainActivity.setFragment(new ReturnProductFragment());
                 break;

@@ -46,14 +46,14 @@ public class FeedbackFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         view.findViewById(R.id.button_home_feedback).setOnClickListener(v -> ma.setFragment(new MainMenuFragment()));
         Integer [] buttonIds = {R.id.button_perfect,R.id.button_good,
-            R.id.button_okay,R.id.button_bad};
+                R.id.button_okay,R.id.button_bad};
         ArrayList<ImageButton> buttons = new ArrayList<>();
         for(Integer b:buttonIds){
             ImageButton button = view.findViewById(b);
             buttons.add(button);
             button.setOnClickListener(v -> {
-                    ma.getCurrentChatData().goToBookmarkSameTopic("thanks");
-                    setSelectedButton(button,buttons);
+                ma.getCurrentChatData().goToBookmarkSameTopic("thanks");
+                setSelectedButton(button,buttons);
             });
         }
     }

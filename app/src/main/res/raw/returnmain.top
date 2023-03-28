@@ -1,6 +1,6 @@
 topic: ~returnmain()
 
-proposal: %init Please show me your receipt so I can find the product you want to return.
+proposal: %init We have many apps related to our school, you can scan the QR code to download or find out more.
 
 proposal: %ticketfound ~confirmation, I found your items, tell me which one you want to return.
 

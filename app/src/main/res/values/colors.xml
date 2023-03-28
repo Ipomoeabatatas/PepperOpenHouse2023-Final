@@ -18,6 +18,8 @@
     <color name="transparent">#00000000</color>
     <color name="transparent_black">#33000000</color>
     <color name="transparent_black_dark">#4D000000</color>
+    <color name="apps_blue">#476984</color>
+    <color name="overseas_blue">#5271ff</color>
 
 
     <!-- android defaults -->

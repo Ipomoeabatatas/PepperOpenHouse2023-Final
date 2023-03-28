@@ -65,7 +65,7 @@ public class EmailFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        view.findViewById(R.id.button_back_email).setOnClickListener(v -> ma.setFragment(new ProductSelectionFragment()));
+        view.findViewById(R.id.button_back_email).setOnClickListener(v -> ma.setFragment(new ShowSOTFragment()));
         view.findViewById(R.id.button_home_email).setOnClickListener(v -> ma.setFragment(new MainMenuFragment()));
         editTextMail = view.findViewById(R.id.fragment_email_text_email);
         editTextMailSuffix = view.findViewById(R.id.fragment_email_text_dropdown_email_suffix);
@@ -88,7 +88,7 @@ public class EmailFragment extends Fragment {
             }
         });
         editTextMail.setOnEditorActionListener(
-            (v, actionId, event) -> onKeyboardSendEmail(view, actionId, event)
+                (v, actionId, event) -> onKeyboardSendEmail(view, actionId, event)
         );
         editTextMailSuffix.setOnEditorActionListener(
                 (v, actionId, event) -> onKeyboardSendEmail(view, actionId, event)

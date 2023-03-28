@@ -98,10 +98,11 @@ public class MainMenuFragment extends Fragment {
         buttonShopping.startAnimation(inFromRightAnimation());
 
 
+
         buttonId.setOnClickListener(v ->
                 ma.setFragment(new CollectFragment()));
         buttonShopping.setOnClickListener(v ->
-                ma.setFragment(new ProductSelectionFragment()));
+                ma.setFragment(new ShowSOTFragment()));
         buttonReturns.setOnClickListener(v ->
                 ma.setFragment(new ReturnMainFragment()));
 

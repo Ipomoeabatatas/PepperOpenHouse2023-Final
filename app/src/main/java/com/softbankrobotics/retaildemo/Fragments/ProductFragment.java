@@ -68,16 +68,16 @@ public class ProductFragment extends Fragment {
                 ma.setQiVariable("size",""+npSize.getValue());
             }
         };
-        view.findViewById(R.id.button_back_products).setOnClickListener(v -> ma.setFragment(new ProductSelectionFragment()));
+        view.findViewById(R.id.button_back_products).setOnClickListener(v -> ma.setFragment(new ShowSOTFragment()));
         view.findViewById(R.id.button_home_products).setOnClickListener(v -> ma.setFragment(new MainMenuFragment()));
         npSize = view.findViewById(R.id.number_picker);
         npSize.setMaxValue(46);
         npSize.setMinValue(35);
         npSize.setOnValueChangedListener((picker, oldVal, newVal) -> {
-                if(pickerLastChanged != null){
-                    pickerLastChanged.cancel();
-                    pickerLastChanged.start();
-                }
+            if(pickerLastChanged != null){
+                pickerLastChanged.cancel();
+                pickerLastChanged.start();
+            }
         });
         npSize.getValue();
         if(ma.getProductString().contains("man")){

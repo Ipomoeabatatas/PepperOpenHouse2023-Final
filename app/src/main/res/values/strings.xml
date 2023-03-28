@@ -2,7 +2,7 @@
 
     <!--app name-->
     <!--default language is english-->
-    <string name="app_name">Pepper SOI</string>
+    <string name="app_name">Test v1 SOIApp</string>
 
     <!--navigation buttons-->
     <string name="home">\"Home\"</string>
@@ -13,9 +13,10 @@
     <string name="yes">\"YES\"</string>
     <string name="no">\"NO\"</string>
     <string name="desk">DESK</string>
-    <string name="internship">\Internship</string>
+    <string name="internship">Internship</string>
     <string name="overseas">Overseas</string>
     <string name="soiclub">SOI Club"</string>
+    <string name="apps" translatable="false">RP Apps"</string>
     <string name="back">\"Back\"</string>
     <string name="promotion">Sneakers man</string>
     <string name="gender">\"Gender\"</string>
@@ -93,6 +94,10 @@
     <string name="password">password</string>
     <string name="signin">Sign in</string>
     <string name="cancel">Cancel</string>
+    <string name="Scanning" translatable="false">Scan the QR code for the App</string>
+    <string name="imageInfo1" translatable="false">SnapApp QR Code</string>
+    <string name="imageInfo2" translatable="false">RP Connect QR Code</string>
+    <string name="imageInfo3" translatable="false">SOH App QR Code</string>
 
     <!--prices-->
     <string name="price">00.00€</string>

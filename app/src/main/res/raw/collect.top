@@ -1,6 +1,6 @@
 topic: ~collect()
 
-proposal: %init Please scan your barcode or enter your order number.
+proposal: %init We at republic Polytechnic have a lot of internship opportunities, below are some companies we partnered with to achieve this.
 
 u:([demo "demo ticket"])  ~confirmation,  ^execute(StatusExecutor, clickdemocollect)
 

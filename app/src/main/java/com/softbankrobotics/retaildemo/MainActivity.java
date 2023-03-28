@@ -1,7 +1,6 @@
 package com.softbankrobotics.retaildemo;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,10 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.content.ContextCompat;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.aldebaran.qi.Future;
 import com.aldebaran.qi.sdk.QiContext;
@@ -31,15 +26,13 @@ import com.softbankrobotics.retaildemo.Barcode.BarcodeTracker;
 import com.softbankrobotics.retaildemo.Executors.FragmentExecutor;
 import com.softbankrobotics.retaildemo.Executors.LanguageExecutor;
 import com.softbankrobotics.retaildemo.Executors.StatusExecutor;
-import com.softbankrobotics.retaildemo.Fragments.CollectConfirmFragment;
 import com.softbankrobotics.retaildemo.Fragments.LoadingFragment;
 import com.softbankrobotics.retaildemo.Fragments.MainMenuFragment;
-import com.softbankrobotics.retaildemo.Fragments.ProductSelectionFragment;
+import com.softbankrobotics.retaildemo.Fragments.ShowSOTFragment;
 import com.softbankrobotics.retaildemo.Fragments.ReturnMainFragment;
 import com.softbankrobotics.retaildemo.Fragments.SplashScreenFragment;
 import com.softbankrobotics.retaildemo.Utils.ChatData;
 import com.softbankrobotics.retaildemo.Utils.CountDownNoInteraction;
-import com.softbankrobotics.retaildemo.Utils.TokenFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -292,7 +285,7 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
     public void setFragment(Fragment fragment) {
         currentFragment = fragment.getClass().getSimpleName();
         String topicName = currentFragment.toLowerCase().replace("fragment", "");
-        if (!(fragment instanceof LoadingFragment || fragment instanceof ProductSelectionFragment || fragment instanceof SplashScreenFragment)) {
+        if (!(fragment instanceof LoadingFragment || fragment instanceof ShowSOTFragment || fragment instanceof SplashScreenFragment)) {
             this.currentChatData.goToBookmarkNewTopic("init", topicName);
         }
         if (this.currentChatData != null) {
@@ -403,11 +396,10 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
             if (getFragment() instanceof ReturnMainFragment) {
                 status.currentTicket = barcode.displayValue;
                 ReturnMainFragment rmf = (ReturnMainFragment) getFragment();
-                rmf.updateProductList();
             } else {
                 Log.d(TAG, "barcode" + barcode.displayValue);
                 status.currentTicket = barcode.displayValue;
-                setFragment(new CollectConfirmFragment());
+
             }
         } catch (Exception e) {
             Log.e(TAG, "wrong fragment needs update in Collect Fragment");

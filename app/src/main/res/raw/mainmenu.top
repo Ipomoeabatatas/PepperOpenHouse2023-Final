@@ -1,8 +1,7 @@
 topic: ~mainmenu()
 
-
-proposal: %init ~hello , ^first ["$first==0^rand["my name is" "I'm"] Pepper, ^rand["I am here to" "I can"] share with you some interestings things. Would you like to learn more about the topics below? Just select the button to learn more  $first = 1"
-                                  "can I help with choosing your dream shoes, picking up your online order or return an item?" ]
+proposal: %init ~hello , ^first ["$first==0^rand["my name is" "I'm"] Pepper, Welcome to Republic Polytechnic. ^rand["I am here to" "I can"] share with you some interestings things about our school $first = 1"
+                                  "Welcome to Republic Polytechnic! ^rand["What would you like to do today" "How can I help you."]" ]
 
 u:(~hello) ~hello ["I see you are back at the main menu" "Welcome back to the main menu "] To learn more about internships, overseas trips, or club activities, please choose from my tablet
 
